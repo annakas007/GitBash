@@ -1,0 +1,140 @@
+1 Создать 3 папки и назвать их
+dir_1 dir_2 dir_3
+
+2 Внутри каждой папки создать по 2 папки и назвать их
+pap_1 pap_2 
+
+mkdir dir_1/pap_1 dir_1/pap_2
+mkdir dir_2/pap_1 dir_2/pap_2
+mkdir dir_3/pap_1 dir_3/pap_2
+
+3 В одной из веток например dir_1/ в папке pap_1/
+создать 4 текстовых документа под названиями 
+text_1.txt text_2.txt note_1.txt note_2.txt
+
+cat > dir_1/pap_1/text_1.txt    
+cat > dir_1/pap_1/text_2.txt
+cat > dir_1/pap_1/note_1.txt
+cat > dir_1/pap_1/note_2.txt
+
+4 Файлы text_1.txt text_2.txt заполнить следующими строками 
+
+ cat >  dir_1/pap_1/text_1.txt
+line_1
+line_2
+line_3
+line_10
+line_11
+
+ctr + c
+
+cat >  dir_1/pap_1/text_2.txt
+line_1
+line_2
+line_3
+line_10
+line_11
+
+
+ctr + c
+
+5 Файлы note_1.txt note_2.txt заполнить следующими строками 
+
+cat >> dir_1/pap_1/note_1.txt
+row_1
+row_2
+row_3
+row_10
+row_11
+row_110
+
+ctr + c
+
+cat >> dir_1/pap_1/note_2.txt
+row_1
+row_2
+row_3
+row_10
+row_11
+row_110
+
+ctr + c
+
+6 Скопировать файлы в dir_1/pap_2/ поменяв при копировании названия файлов на  
+text_1_2.txt text_2_2.txt note_1_2.txt note_2_2.txt
+
+cp dir_1/pap_1/text_1.txt   dir_1/pap_2/text_1_2.txt
+cp dir_1/pap_1/text_2.txt   dir_1/pap_2/text_2_2.txt
+cp dir_1/pap_1/note_1.txt   dir_1/pap_2/note_1_2.txt
+cp dir_1/pap_1/note_2.txt   dir_1/pap_2/note_2_2.txt
+
+7 выйти в корневой каталог
+
+8 Используя find найти путь к файлу имя которого note_2_2.txt
+
+find . -name 'note_2_2.txt'
+
+9 Используя find найти путь к файлу имя которого text_1.txt
+
+find . -name 'text_1.txt'
+
+10 Используя find найти путь к файлам имя которых содержит букву t
+
+find . -type f -name '*t*.*'
+
+11 Используя find найти путь к файлам имя которых содержит txt
+
+find . -type f -name '*.txt'
+
+12 Используя find найти все папки pap_2
+
+find . -type d -name 'pap_2'
+
+13 Используя find найти путь ко всем папкам имя которых содержит _1
+
+find . -type d -name '*_1'
+
+Задание по GREP
+
+1 Не выходя из корневой папки, найти в файле text_1.txt все строки содержащие слово line (+ все производные)
+
+grep -r 'line'  text_1.txt
+
+2 Не выходя из корневой папки, найти в файле note_2.txt все строки содержащие выражение row_1
+ (+ все производные)
+
+grep 'row_1' dir_1/pap_1/note_2.txt
+
+3 Не выходя из корневой папки, найти файле text_1.txt и в файле text_2.txt все строки содержащие слово line
+ (выполнить 1 командой)
+
+grep 'line' dir_1/pap_1/text_1.txt dir_1/pap_1/text_2.txt
+
+4 Не выходя из корневой папки, найти во всех папках все строки содержащие выражение line_10
+
+grep -r 'line_10' 
+grep -r 'line_10' 
+
+5 Во всех файлах найти строку именно с таким словом line_1 (что бы не выдавал при поиске например line_10 
+без производных)
+
+grep -w 'line_1' dir_1/pap_2/*.txt
+grep -w 'line_1' dir_1/pap_1/*.txt
+
+6 Вывести путь к файлам в которых содержится row (и все производные этого слова)
+
+grep -e row dir_1/pap_1/*.txt
+grep -e row dir_1/pap_2/*.txt
+
+7 Вывести путь к файлам в которых содержится конкретно row_11 ( без производных от этого слова)
+
+grep -l 'row_11' dir_1/pap_2/*.txt
+
+8 Сгрузить всю информацию из text_1.txt и  note_2.txt в единый файл под названием all_1.txt
+
+mv dir_1/pap_1/text_1.txt dir_1/pap_2/all_1.txt
+mv dir_1/pap_1/note_2.tx dir_1/pap_2/all_1.txt
+
+9 Сгрузить информацию из всех файлов и всех папок внутри корневого каталога в файл all_2.txt
+
+10 Посмотреть что находит внутри файлов сгрузки
